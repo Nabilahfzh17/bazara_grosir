@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Bazara Grosir',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -30,4 +30,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
