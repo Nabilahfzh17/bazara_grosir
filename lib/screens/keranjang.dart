@@ -61,17 +61,27 @@ class _KeranjangState extends State<Keranjang> {
                 width: MediaQuery.of(context).size.width * 0.45,
                 child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        backgroundColor: Warna.goldHalfBaz,
+                        backgroundColor: checkoutList.isNotEmpty
+                            ? Warna.goldHalfBaz
+                            : Colors.grey.shade300,
                         elevation: 0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         )),
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => Pengirimanpage(),
-                          ));
+                      if (checkoutList.isNotEmpty) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => Pengirimanpage(),
+                            )).then((value) {
+                          if (value == 'clear') {
+                            totalPrice = 0;
+                            checkoutList.clear();
+                            setState(() {});
+                          }
+                        });
+                      }
                     },
                     child: Text(
                       "Pengiriman",
@@ -210,6 +220,9 @@ class _KeranjangState extends State<Keranjang> {
                                     'diskon': cartProduct[index]['diskon'],
                                     'qty': cartProduct[index]['qty'],
                                     'message': messageController[index].text,
+                                    'pengiriman': '',
+                                    'biaya pengiriman': 0,
+                                    'subtotal': 0,
                                   });
                                   setState(() {
                                     checkoutList.forEach((item) {

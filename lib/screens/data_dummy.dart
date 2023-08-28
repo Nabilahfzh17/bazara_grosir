@@ -210,3 +210,88 @@ List<Map<String, dynamic>> orderList = [
     'biaya pengiriman': '0',
   },
 ];
+
+List<Map<String, dynamic>> paymentMethodList = [
+  {
+    "id": 1,
+    "image": 'assets/BANKCODE/gopay.png',
+    "name": 'Gopay',
+    "cost": 0,
+    "selected": false,
+    "selected method": '',
+  },
+  {
+    "id": 2,
+    "image": 'assets/baz_icons/baz_wallet.png',
+    "name": 'Transfer Bank',
+    "cost": 4000,
+    "selected": false,
+    "selected method": '',
+  },
+  {
+    "id": 3,
+    "image": 'assets/baz_icons/baz_wallet.png',
+    "name": 'Virtual Account Bank',
+    "cost": 2000,
+    "selected": false,
+    "selected method": '',
+  },
+];
+
+List<Map<String, dynamic>> bankList = [
+  {
+    'id': 1,
+    'code': 'bca',
+    'name': 'BCA',
+  },
+  {
+    'id': 2,
+    'code': 'bni',
+    'name': 'BNI',
+  },
+  {
+    'id': 3,
+    'code': 'bri',
+    'name': 'BRI',
+  },
+  {
+    'id': 4,
+    'code': 'bsm',
+    'name': 'BSM',
+  },
+  {
+    'id': 5,
+    'code': 'cimb',
+    'name': 'Cimbniaga',
+  },
+  {
+    'id': 6,
+    'code': 'danamon',
+    'name': 'Danamon',
+  },
+  {
+    'id': 7,
+    'code': 'dbs',
+    'name': 'DBS',
+  },
+  {
+    'id': 8,
+    'code': 'mandiri',
+    'name': 'Mandiri',
+  },
+  {
+    'id': 9,
+    'code': 'muamalat',
+    'name': 'Muamalat',
+  },
+  {
+    'id': 10,
+    'code': 'permata',
+    'name': 'Permata',
+  },
+  {
+    'id': 11,
+    'code': 'tabungan_pensiunan_nasional',
+    'name': 'BTPN',
+  },
+];
