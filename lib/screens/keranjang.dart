@@ -199,12 +199,19 @@ class _KeranjangState extends State<Keranjang> {
                             Spacer(),
                             InkWell(
                               onTap: () {
-                                if (isSelected) {
-                                  checkoutList.remove(cartProduct[index]);
+                                if (isSelected == true) {
+                                  checkoutList.remove(checkoutList[index]);
                                   setState(() {
-                                    checkoutList.forEach((item) {
-                                      totalPrice -=
-                                          int.parse(item["harga"].toString());
+                                    // for (var item in checkoutList) {
+                                    //   totalPrice -
+                                    //       int.parse(item["harga"].toString());
+                                    // }
+                                    totalPrice = checkoutList.fold(0,
+                                        (previousValue, data) {
+                                      return previousValue -
+                                          int.parse(
+                                              (data['harga'] * data['qty'])
+                                                  .toString());
                                     });
                                     cartProduct[index]['selected'] = false;
                                   });
@@ -225,9 +232,16 @@ class _KeranjangState extends State<Keranjang> {
                                     'subtotal': 0,
                                   });
                                   setState(() {
-                                    checkoutList.forEach((item) {
-                                      totalPrice +=
-                                          int.parse(item["harga"].toString());
+                                    // for (var item in checkoutList) {
+                                    //   totalPrice +
+                                    //       int.parse(item["harga"].toString());
+                                    // }
+                                    totalPrice = checkoutList.fold(0,
+                                        (previousValue, data) {
+                                      return previousValue +
+                                          int.parse(
+                                              (data['harga'] * data['qty'])
+                                                  .toString());
                                     });
                                     cartProduct[index]['selected'] = true;
                                   });
@@ -280,7 +294,11 @@ class _KeranjangState extends State<Keranjang> {
                                 onTap: () {
                                   setState(() {
                                     cartProduct.remove(cartProduct[index]);
+                                    checkoutList.remove(checkoutList[index]);
+                                    totalPrice = 0;
                                   });
+                                  log(cartProduct.toString());
+                                  log(checkoutList.toString());
                                 },
                                 child: Icon(
                                   Icons.delete_outline,
@@ -306,6 +324,31 @@ class _KeranjangState extends State<Keranjang> {
                                                 if (cartProduct[index]['qty'] >
                                                     0) {
                                                   cartProduct[index]['qty']--;
+                                                  checkoutList[index]['qty']--;
+                                                  totalPrice = checkoutList
+                                                      .fold(0, (previousValue,
+                                                          data) {
+                                                    return previousValue -
+                                                        (double.parse((data[
+                                                                        'harga'] /
+                                                                    cartProduct[
+                                                                            index]
+                                                                        ['qty'])
+                                                                .toString()))
+                                                            .toInt();
+                                                  });
+                                                  // totalPrice = checkoutList
+                                                  //     .fold(0, (previousValue,
+                                                  //         data) {
+                                                  //   return previousValue -
+                                                  //       int.parse(double.parse((data[
+                                                  //                       'harga'] /
+                                                  //                   cartProduct[
+                                                  //                           index]
+                                                  //                       ['qty'])
+                                                  //               .toString())
+                                                  //           .toString());
+                                                  // });
                                                 }
                                               },
                                             )
@@ -334,6 +377,14 @@ class _KeranjangState extends State<Keranjang> {
                                             setState(
                                               () {
                                                 cartProduct[index]['qty']++;
+                                                totalPrice = checkoutList.fold(
+                                                    0, (previousValue, data) {
+                                                  return previousValue +
+                                                      int.parse((data['harga'] *
+                                                              cartProduct[index]
+                                                                  ['qty'])
+                                                          .toString());
+                                                });
                                               },
                                             )
                                           })

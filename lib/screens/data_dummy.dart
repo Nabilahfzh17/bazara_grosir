@@ -217,7 +217,7 @@ List<Map<String, dynamic>> paymentMethodList = [
     "image": 'assets/BANKCODE/gopay.png',
     "name": 'Gopay',
     "cost": 0,
-    "selected": false,
+    "selected": true,
     "selected method": '',
   },
   {

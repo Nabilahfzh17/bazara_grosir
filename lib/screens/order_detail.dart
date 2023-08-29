@@ -404,7 +404,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                 ),
                 Expanded(
                   child: Text(
-                    currText(text: detailOrder[0]['biaya admin']),
+                    currText(text: detailOrder[0]['biaya admin'].toString()),
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                 ),
@@ -428,7 +428,8 @@ class _OrderDetailsState extends State<OrderDetails> {
                 ),
                 Expanded(
                   child: Text(
-                    currText(text: detailOrder[0]['biaya pengiriman']),
+                    currText(
+                        text: detailOrder[0]['biaya pengiriman'].toString()),
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
                   ),
                 ),

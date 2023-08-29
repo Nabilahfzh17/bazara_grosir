@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:product_groceries/my_theme.dart';
 import 'package:product_groceries/screens/data_dummy.dart';
@@ -122,9 +123,11 @@ class _OrderScreenState extends State<OrderScreen> {
       body: ListView.builder(
         itemCount: filterOrderList.length,
         scrollDirection: Axis.vertical,
+        // reverse: true,
+        // dragStartBehavior: DragStartBehavior.down,
         padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
         itemBuilder: (context, index) {
-          final item = filterOrderList[index];
+          final item = filterOrderList.reversed.toList()[index];
           return filterOrderList.isEmpty
               ? Container(
                   margin: EdgeInsets.only(top: 50),
