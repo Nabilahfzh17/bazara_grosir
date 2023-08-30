@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:product_groceries/my_theme.dart';
 import 'package:product_groceries/screens/data_dummy.dart';
+import 'package:product_groceries/screens/payment_screen.dart';
 import 'package:product_groceries/widgets/custom_text.dart';
 
 class OrderDetails extends StatefulWidget {
@@ -540,7 +541,23 @@ class _OrderDetailsState extends State<OrderDetails> {
             ),
             Expanded(
               child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: detailOrder[0]['status'] == 'Menunggu Pembayaran'
+                      ? () {
+                          Navigator.push(context, MaterialPageRoute(
+                            builder: (context) {
+                              return PaymentScreen(
+                                orderId: [detailOrder[0]['id']],
+                                backPop: true,
+                                orderIndex: widget.orderId! - 1,
+                              );
+                            },
+                          )).then((value) {
+                            setState(() {
+                              detailOrder[0]['status'] = value;
+                            });
+                          });
+                        }
+                      : () {},
                   style: ElevatedButton.styleFrom(
                       elevation: 0,
                       backgroundColor: Warna.goldHalfBaz,
@@ -548,7 +565,9 @@ class _OrderDetailsState extends State<OrderDetails> {
                         borderRadius: BorderRadius.circular(14),
                       )),
                   child: Text(
-                    'Selesaikan Pesanan',
+                    detailOrder[0]['status'] == 'Menunggu Pembayaran'
+                        ? 'Bayar'
+                        : 'Selesaikan Pesanan',
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 15,

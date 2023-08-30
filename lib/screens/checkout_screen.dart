@@ -21,6 +21,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
   int totalPrice = 0;
   String paymentSelected = '';
   bool itsReady = false;
+  List<int> orderId = [];
 
   @override
   void initState() {
@@ -35,7 +36,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         // adminCost = costAdmin;
         shippingCost += int.parse(item['biaya pengiriman'].toString());
         totalPrice = productPrice + adminCost + shippingCost;
+        // orderId.addAll([item['id']]);
       });
+      // log(orderId.toString());
       log(totalPrice.toString());
     });
   }
@@ -64,8 +67,10 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
         'biaya admin': adminCost,
         'biaya pengiriman': shippingCost,
       });
+      orderId.add(orderList.length + 1);
       log(orderList.length.toString());
       log(orderList.toString());
+      log(orderId.toString());
       // orderList.addAll(
       //   checkoutList
       // );
@@ -153,7 +158,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                           chekoutPay();
                           Navigator.push(context, MaterialPageRoute(
                             builder: (context) {
-                              return PaymentScreen();
+                              return PaymentScreen(
+                                orderId: orderId,
+                              );
                             },
                           ));
                         }
@@ -482,21 +489,21 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                         } else {
                           getAdminCostInfo(2000);
                         }
-                        if (checkoutList[indexselected]['subtotal'] != 0 &&
-                            totalPrice >
-                                checkoutList[indexselected]['subtotal']) {
-                          setState(() {
-                            itsReady = true;
-                          });
-                        } else if (checkoutList[indexselected]['subtotal'] !=
-                                0 &&
-                            totalPrice >=
-                                checkoutList[indexselected]['subtotal'] &&
-                            checkoutList.length < 2) {
-                          setState(() {
-                            itsReady = true;
-                          });
+                        for (int indx = 0; indx < checkoutList.length; indx++) {
+                          if (checkoutList[indx]['subtotal'] != 0 &&
+                              totalPrice > checkoutList[indx]['subtotal']) {
+                            setState(() {
+                              itsReady = true;
+                            });
+                          } else if (checkoutList[indx]['subtotal'] != 0 &&
+                              totalPrice >= checkoutList[indx]['subtotal'] &&
+                              checkoutList.length < 2) {
+                            setState(() {
+                              itsReady = true;
+                            });
+                          }
                         }
+
                         log(paymentMethodList[indexselected]['selected method']
                             .toString());
                         Navigator.pop(context);

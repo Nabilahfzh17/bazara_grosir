@@ -235,7 +235,15 @@ class _HomeSreenState extends State<HomeSreen> {
                   Card(
                     margin: EdgeInsets.all(5.0),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return kategoriScreen(
+                              kategori: 'Produk Segar',
+                            );
+                          },
+                        ));
+                      },
                       splashColor: MyTheme.soft_accent_color,
                       child: Center(
                           child: Column(
@@ -257,7 +265,15 @@ class _HomeSreenState extends State<HomeSreen> {
                   Card(
                     margin: EdgeInsets.all(5.0),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return kategoriScreen(
+                              kategori: 'Rumah Tangga',
+                            );
+                          },
+                        ));
+                      },
                       splashColor: MyTheme.soft_accent_color,
                       child: Center(
                           child: Column(
@@ -281,7 +297,15 @@ class _HomeSreenState extends State<HomeSreen> {
                   Card(
                     margin: EdgeInsets.all(5.0),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return kategoriScreen(
+                              kategori: 'Bahan Makanan',
+                            );
+                          },
+                        ));
+                      },
                       splashColor: MyTheme.soft_accent_color,
                       child: Center(
                           child: Column(
@@ -305,7 +329,15 @@ class _HomeSreenState extends State<HomeSreen> {
                   Card(
                     margin: EdgeInsets.all(5.0),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return kategoriScreen(
+                              kategori: 'Susu Telur',
+                            );
+                          },
+                        ));
+                      },
                       splashColor: MyTheme.soft_accent_color,
                       child: Center(
                           child: Column(
@@ -330,7 +362,15 @@ class _HomeSreenState extends State<HomeSreen> {
                   Card(
                     margin: EdgeInsets.all(5.0),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return kategoriScreen(
+                              kategori: 'Produk Beku',
+                            );
+                          },
+                        ));
+                      },
                       splashColor: MyTheme.soft_accent_color,
                       child: Center(
                           child: Column(
@@ -354,7 +394,15 @@ class _HomeSreenState extends State<HomeSreen> {
                   Card(
                     margin: EdgeInsets.all(5.0),
                     child: InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(
+                          builder: (context) {
+                            return kategoriScreen(
+                              kategori: 'Jajanan',
+                            );
+                          },
+                        ));
+                      },
                       splashColor: Warna.redBaz,
                       child: Center(
                           child: Column(
